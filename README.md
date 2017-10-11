@@ -10,8 +10,8 @@ I've added a type for shared state in ``state.nim`` to demonstrate how nimscript
 As mentioned above, the files in ``embeddedNimScript`` assume the existence of ``../state.nim`` where common types are defined.
 They also assume these folders and files to be put alongside the binary:
 
-* scripts
-  * **stdlib** - a copy of from Nim's lib directory
+* **scripts**
+  * **stdlib** - a copy of Nim's lib directory
   * **api.nim** - the declarations of the procs exposed to the scripts
   * **script1.nims** - the nimscript files, can have any name
   * ...
@@ -41,3 +41,9 @@ let result = script1.call("sub", [newIntNode(nkInt32Lit, 8), newIntNode(nkInt32L
 # The result is wrapped in a PNode so we need to use corresponding proc from ``compiler/ast`` to get the value
 echo result.getInt()
 ```
+
+## Version
+
+This is build for the nim compiler version 0.17.2
+
+You may want to replace the copy of the stdlib when there are updates, but keep in mind that only certain modules can be used in nimscript.
