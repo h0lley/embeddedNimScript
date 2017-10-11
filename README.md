@@ -1,5 +1,5 @@
 # embeddedNimScript
-Using NimScript as embedded scripting language, enabling hot loading.
+Using NimScript as embedded scripting language, enabling hot loading among other neat things.
 
 
 
