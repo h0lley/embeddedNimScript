@@ -51,7 +51,7 @@ Just declare new procs in ``scripts/api.nim`` with nothing in the body other tha
 proc add (a, b: int): int = builtin
 ```
 
-And then implement them in ``embeddedNims/apiImpl.nim`` within `the ``exposeScriptApi`` proc. Example:
+And then implement them in ``embeddedNims/apiImpl.nim`` within the ``exposeScriptApi`` proc. Example:
 
 ```nim
 expose add:
