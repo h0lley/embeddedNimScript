@@ -1,6 +1,7 @@
 # embeddedNimScript
 Using NimScript as embedded scripting language, enabling hot loading among other neat things.
 
+This can call procs with arguments and return values both ways (nim -> nims & nims -> nim).
 
 
 ## Shared state
