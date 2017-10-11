@@ -6,14 +6,13 @@ from compiler/vmdef import PCtx
 
 
 type
-    Script* = tuple[
-        filename: string,
-        mainModule: PSym,
-        graph: ModuleGraph,
-        cache: IdentCache,
-        context: PCtx]
+    Script* = object
+        filename: string
+        mainModule: PSym
+        graph: ModuleGraph
+        cache: IdentCache
+        context: PCtx
     
-    State* = ref tuple[
-        modifyMe: string,
-        vmIdCache: IdentCache,
-        ]
+    State* = ref object
+        modifyMe: string
+        vmIdCache: IdentCache
