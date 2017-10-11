@@ -44,6 +44,27 @@ let result = script1.call("sub", [newIntNode(nkInt32Lit, 8), newIntNode(nkInt32L
 echo result.getInt() # -4
 ```
 
+## Extending the API available to the scripts
+
+Just declare new procs in ``scripts/api.nim`` with nother in the body other than ``builtin``. Example:
+```nim
+proc add (a, b: int): int = builtin
+```
+
+And then implement them in ``embeddedNims/apiImpl.nim`` within `the ``exposeScriptApi`` proc. Example:
+
+```nim
+expose add:
+    # We need to use procs like getInt to retrieve the argument values from VmArgs
+    let arg1 = getInt(a, 0)
+    let arg2 = getInt(a, 1)
+    # Instead of using the return statement we need to use setResult
+    setResult(a, arg1 + arg2)
+```
+And now it can be called from nimscript.
+
+There's no need to include the declarations into the nimscript file manually, this is already being done implicitly.
+
 ## Version
 
 This is build for the nim compiler version 0.17.2
