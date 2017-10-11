@@ -7,12 +7,12 @@ from compiler/vmdef import PCtx
 
 type
     Script* = object
-        filename: string
-        mainModule: PSym
-        graph: ModuleGraph
-        cache: IdentCache
-        context: PCtx
+        filename*: string
+        mainModule*: PSym
+        graph*: ModuleGraph
+        cache*: IdentCache
+        context*: PCtx
     
     State* = ref object
-        modifyMe: string
-        vmIdCache: IdentCache
+        modifyMe*: string
+        vmIdCache*: IdentCache
