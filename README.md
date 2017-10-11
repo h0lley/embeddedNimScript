@@ -32,6 +32,7 @@ state.vmIdCache = newIdentCache()
 let script1 = state.compileScript("script1.nims")
 
 # After changing the nimscript file, reload it
+# This will also immediately run the script
 script1.reload()
 
 # Call a proc that's defined in the nimscript file
@@ -39,5 +40,4 @@ let result = script1.call("sub", [newIntNode(nkInt32Lit, 8), newIntNode(nkInt32L
 
 # The result is wrapped in a PNode so we need to use corresponding proc from ``compiler/ast`` to get the value
 echo result.getInt()
-echo 
 ```
