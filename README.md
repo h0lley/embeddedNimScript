@@ -39,7 +39,7 @@ script1.reload()
 # We need to use those newIntNode procs to pass the arguments as PNodes
 let result = script1.call("sub", [newIntNode(nkInt32Lit, 8), newIntNode(nkInt32Lit, 12)])
 
-# The result is wrapped in a PNode so we need to use corresponding proc from ``compiler/ast`` to get the value
+# The result is wrapped in a PNode so we need to use corresponding proc from compiler/ast to get the value
 echo result.getInt()
 ```
 
