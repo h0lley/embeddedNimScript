@@ -4,7 +4,7 @@ Using NimScript as embedded scripting language, enabling hot loading among other
 
 
 ## Shared state
-I've added a type for shared state in ``state.nim`` to demonstrate how nimscript files that are compiled and exeuted on runtime can modify the state of the main application. This file is imported in ``main.nim`` (example), ``embeddedNimScript/apiImpl.nim`` and ``embeddedNimScript/enims.nim``, and due to that, ``embeddedNimScript`` cannot be treated as independent module.
+I've added a type for shared state in ``state.nim`` to demonstrate how nimscript files that are compiled and exeuted on runtime can modify the state of the main application. This file is imported in ``main.nim`` (example), ``embeddedNimScript/apiImpl.nim`` and ``embeddedNimScript/enims.nim``, and due to that, ``embeddedNimScript`` cannot be treated as fully independent module.
 
 ## Assumptions
 As mentioned above, the files in ``embeddedNimScript`` assume the existence of ``../state.nim`` where common types are defined.
