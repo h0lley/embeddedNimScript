@@ -18,7 +18,7 @@ proc main =
         # Calls the nim proc add (see apiImpl), printing the result of 8 + 12
         script1 = state.compileScript("script1.nims")
         
-        # Calls the nim proc modifyState (see apiImpl), chaning state.modifyMe from dogs to cats
+        # Calls the nim proc modifyState (see apiImpl), changing state.modifyMe from dogs to cats
         script2 = state.compileScript("script2.nims")
     
     # Calls the nims proc sub with the arguments 8 and 12, and prints the result
