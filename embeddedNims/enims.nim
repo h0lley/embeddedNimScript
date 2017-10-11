@@ -28,7 +28,7 @@ options.libpath = scriptsDir & "/stdlib"
 options.implicitIncludes.add(scriptsDir / "api.nim")
 
 
-proc setupNimsript =
+proc setupNimscript =
     passes.gIncludeFile = includeModule
     passes.gImportModule = importModule
     
@@ -48,7 +48,7 @@ proc cleanupNimscript =
 
 
 proc compileScript* (state: State, filename: string): Script =
-    setupNimsript()
+    setupNimscript()
     
     # Populate result
     result.filename = scriptsDir / filename
@@ -82,7 +82,7 @@ proc compileScript* (state: State, filename: string): Script =
 
 
 proc reload* (script: Script) =
-    setupNimsript()
+    setupNimscript()
     
     initStrTable(script.mainModule.tab)
     vm.globalCtx = script.context
