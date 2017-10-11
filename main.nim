@@ -1,5 +1,4 @@
 
-from compiler/vm import getInt
 from compiler/ast import getInt, newIntNode, nkInt32Lit
 
 import embeddedNims/enims
