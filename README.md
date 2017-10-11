@@ -67,6 +67,6 @@ There's no need to include the declarations into the nimscript file manually, th
 
 ## Version
 
-This is build for the nim compiler version 0.17.2
+This is build for the nim compiler version 0.17.0
 
 You may want to replace the copy of the stdlib when there are updates, but keep in mind that only certain modules can be used in nimscript.
