@@ -18,7 +18,7 @@ They also assume these folders and files to be put alongside the binary:
 
 Furthermore, it is assumed that the shared state contains a ``IdentCache`` type initialized with ``newIdentCache()``.
 
-All of these assumptions should be pretty easily adjustable or removable though.
+Most of these assumptions should be pretty easily adjustable or removable though.
 
 ## Usage
 
