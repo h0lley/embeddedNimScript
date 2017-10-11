@@ -36,6 +36,7 @@ let script1 = state.compileScript("script1.nims")
 script1.reload()
 
 # Call a proc that's defined in the nimscript file
+# We need to use those newIntNode procs to pass the arguments as PNodes
 let result = script1.call("sub", [newIntNode(nkInt32Lit, 8), newIntNode(nkInt32Lit, 12)])
 
 # The result is wrapped in a PNode so we need to use corresponding proc from ``compiler/ast`` to get the value
