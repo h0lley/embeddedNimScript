@@ -46,7 +46,7 @@ echo result.getInt() # -4
 
 ## Extending the API available to the scripts
 
-Just declare new procs in ``scripts/api.nim`` with nother in the body other than ``builtin``. Example:
+Just declare new procs in ``scripts/api.nim`` with nothing in the body other than ``builtin``. Example:
 ```nim
 proc add (a, b: int): int = builtin
 ```
