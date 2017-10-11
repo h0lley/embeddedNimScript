@@ -40,7 +40,7 @@ script1.reload()
 let result = script1.call("sub", [newIntNode(nkInt32Lit, 8), newIntNode(nkInt32Lit, 12)])
 
 # The result is wrapped in a PNode so we need to use corresponding proc from compiler/ast to get the value
-echo result.getInt()
+echo result.getInt() # -4
 ```
 
 ## Version
