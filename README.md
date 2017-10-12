@@ -12,7 +12,7 @@ As mentioned above, the files in ``embeddedNimScript`` assume the existence of `
 They also assume these folders and files to be put alongside the binary:
 
 * **scripts**
-  * **stdlib** - a copy of Nim's lib directory
+  * **stdlib** - a copy of Nim's lib directory (version 0.17.2)
   * **api.nim** - the declarations of the procs exposed to the scripts
   * **script1.nims** - the nimscript files, can have any name
   * ...
