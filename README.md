@@ -65,6 +65,12 @@ And now it can be called from nimscript.
 
 There's no need to include the declarations into the nimscript file manually, this is already being done implicitly.
 
+## Areas of improvement
+
+One thing that's sad is that when you load an erroneous script, the main application terminates. It would be much nicer when the main application would just refuse the the script and keep running, ideally printing a error message / stack trace. For example, that would be great for rapid prototyping or for a plugin/mod system where users may want to toy around in more of a sandbox.
+
+Another thing is that currently, you can only easily pass ints, floats, bools and strings between nim and nims, more complex types are tricky. We'd need additional <get type from VmArgs> and ``setResult`` procs (see ``compiler/vmhooks.nim``), as well as <get type from PNode> procs (see ``compiler/ast.nim``) for the more complex types.
+
 ## Version
 
 This is build for the nim compiler version 0.17.0
