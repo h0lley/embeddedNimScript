@@ -1,2 +1,3 @@
 
-modifyState("cats")
+proc update* =
+    modifyState("cats")
