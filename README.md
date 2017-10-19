@@ -13,12 +13,12 @@ This is to showcase how nimscripts that are compiled and exeuted during runtime 
 Furthermore, ``embeddedNimScript/enims.nim`` assumes these folders and files to be put alongside the binary:
 
 * **scripts**
-  * **stdlib** - a copy of Nim's lib directory (version 0.17.2)
+  * **stdlib** - a copy of Nim's lib directory
   * **api.nim** - the declarations of the procs exposed to the scripts
   * **script1.nims** - the nimscript files, can have any name
   * ...
 
-Also, a copy of the nim compiler needs to sit alongside ``embeddedNimScript/enims.nim`` or alternatively, it can be installed via ```nimble install compiler``.
+Also, a copy of the nim compiler needs to sit alongside ``embeddedNimScript/enims.nim`` or alternatively, it can be installed via ``nimble install compiler``.
 
 
 ## Usage
@@ -29,7 +29,7 @@ Also, a copy of the nim compiler needs to sit alongside ``embeddedNimScript/enim
 let script1 = compileScript("script1.nims")
 
 # After changing the nimscript file, reload it
-# This will also immediately run the script, executing its global scope and **re**defining its procs
+# This will also immediately run the script, executing its global scope and redefining its procs
 script1.reload()
 
 # Call a proc that's defined in the nimscript file
@@ -42,7 +42,7 @@ echo result.getInt() # -4
 
 ## Watcher
 
-You can do ``compileScript("scriptname.nims"`, watch = true)`` to start a thread that watches the scriptfile and automatically reloads it should it detect changes. This is why ```threadpool`` is being used. You should be able to easily remove this functionality if you want to compile without ``--threads:on``.
+You can do ``compileScript("scriptname.nims"`, watch = true)`` to start a thread that watches the scriptfile and automatically reloads it should it detect changes. This is why ``threadpool`` is being used. You should be able to easily remove this functionality if you want to compile without ``--threads:on``.
 
 
 ## Extending the API available to the scripts
@@ -76,6 +76,6 @@ Another thing is that currently, you can only easily pass ints, floats, bools an
 
 ## Version
 
-This is build for the nim compiler version 0.17.0
+This is tested with Nim version 0.17.2
 
 You may want to replace the copy of the stdlib when there are updates, but keep in mind that only certain modules can be used in nimscript.
