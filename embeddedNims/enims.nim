@@ -57,7 +57,7 @@ proc watch (filename: string): int =
             break
 
 
-proc compileScript* (filename: string, watch = true): Script =
+proc compileScript* (filename: string, watch = false): Script =
     setupNimscript()
 
     # Populate result
