@@ -12,8 +12,8 @@ This is to showcase how nimscripts that are compiled and exeuted during runtime 
 ``embeddedNimScript/apiImpl.nim`` assumes the existence of ``../state.nim`` as described above. This is purely optional.
 Furthermore, ``embeddedNimScript/enims.nim`` assumes these folders and files to be put alongside the binary:
 
-* **scripts**
-  * **stdlib** - a copy of Nim's lib directory
+* **scripts/**
+  * **stdlib** - a copy of (or symlink to) Nim's lib directory
   * **api.nim** - the declarations of the procs exposed to the scripts
   * **script1.nims** - the nimscript files, can have any name
   * ...
@@ -69,9 +69,9 @@ There's no need to include the declarations into the nimscript file manually, th
 
 ## Areas of improvement
 
-One thing that's sad is that when you load an erroneous script, the main application terminates. It would be much nicer when the main application would just refuse the the script and keep running, ideally printing a error message / stack trace. For example, that would be great for rapid prototyping or for a plugin/mod system where users may want to toy around in more of a sandbox.
+One thing that's sad is that when you load an erroneous script, the main application terminates. It would be much nicer when the main application would just refuse the script and keep running, ideally printing a error message / stack trace. For example, that would be great for rapid prototyping or for a plugin/mod system where users may want to toy around in more of a sandbox.
 
-Another thing is that currently, you can only easily pass ints, floats, bools and strings between nim and nims, more complex types are tricky. We'd need additional "get type from VmArgs" and ``setResult`` procs (see ``compiler/vmhooks.nim``), as well as "get type from PNode" procs (see ``compiler/ast.nim``) for the more complex types.
+Another thing is that currently, you can only easily pass ints, floats, bools and strings between nim and nims, more complex types are tricky. We'd need additional "get type from VmArgs" and ``setResult`` procs (see ``compiler/vmhooks.nim``), as well as "get type from PNode" procs (see ``compiler/ast.nim``) for the more complex types. From what I can tell you need to add custom ``setResult`` and "get type from VmArgs" for each of your tuples and objects you want to be able to pass along.
 
 
 ## Version
