@@ -25,7 +25,7 @@ proc main =
     script2.call("update")
 
     # Try hot loading:
-    when true:
+    when false:
         echo "change state to `quit` in script2.nims to break"
         while true:
             sleep(1000)
