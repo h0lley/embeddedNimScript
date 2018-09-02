@@ -6,7 +6,7 @@ This can call procs with arguments and return values both ways (nim -> nims & ni
 
 ## Shared state
 I've added ``state.nim`` as module to hold state to be shared.
-This is to showcase how nimscripts that are compiled and exeuted during runtime can modify the state of the main application.
+This is to showcase how nimscripts that are compiled and executed during runtime can modify the state of the main application.
 
 ## Assumptions
 ``embeddedNimScript/apiImpl.nim`` assumes the existence of ``../state.nim`` as described above. This is purely optional.
@@ -33,8 +33,8 @@ let script1 = compileScript("script1.nims")
 script1.reload()
 
 # Call a proc that's defined in the nimscript file
-# We need to use those newIntNode procs to pass the arguments as PNodes
-let result = script1.call("sub", [newIntNode(nkInt32Lit, 8), newIntNode(nkInt32Lit, 12)])
+# We need to use those toNode procs to pass the arguments as PNodes
+let result = script1.call("subract", toNode(8), toNode(12)])
 
 # The result is wrapped in a PNode so we need to use corresponding proc from compiler/ast to get the value
 echo result.getInt() # -4
@@ -42,7 +42,7 @@ echo result.getInt() # -4
 
 ## Watcher
 
-You can do ``compileScript("scriptname.nims"`, watch = true)`` to start a thread that watches the scriptfile and automatically reloads it should it detect changes. This is why ``threadpool`` is being used. You should be able to easily remove this functionality if you want to compile without ``--threads:on``.
+You can do ``compileScript("scriptname.nims", watch = true)`` to start a thread that watches the scriptfile and automatically reloads it should it detect changes. This is why ``threadpool`` is being used. You should be able to easily remove this functionality if you want to compile without ``--threads:on``.
 
 
 ## Extending the API available to the scripts
@@ -76,6 +76,4 @@ Another thing is that currently, you can only easily pass ints, floats, bools an
 
 ## Version
 
-This is tested with Nim version 0.17.2
-
-You may want to replace the copy of the stdlib when there are updates, but keep in mind that only certain modules can be used in nimscript.
+This is tested with Nim version 0.18.0

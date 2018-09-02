@@ -10,7 +10,7 @@ from compiler/options import searchPaths
 from compiler/condsyms import initDefines, defineSymbol, undefSymbol
 from compiler/passes import registerPass, clearPasses, processModule
 from compiler/modules import makeModule, compileSystemModule, includeModule, importModule
-from compiler/ast import PSym, PNode, TSymFlag, initStrTable
+from compiler/ast import PSym, PNode, TSymFlag, initStrTable, newIntNode, newFloatNode, newStrNode, newNode, newTree, TNodeKind
 
 import os, threadpool, times
 
@@ -24,6 +24,30 @@ options.implicitIncludes.add(scriptsDir / "api.nim")
 
 # Identifer cache
 let identCache = newIdentCache()
+
+
+# Nodes can be passed to setResult or used as arguments in script.call
+proc toNode* (val: int): PNode = newIntNode(nkIntLit, val)
+proc toNode* (val: float): PNode = newFloatNode(nkFloatLit, val)
+proc toNode* (val: string): PNode = newStrNode(nkStrLit, val)
+proc toNode* (val: bool): PNode = val.ord.toNode
+proc toNode* (val: enum): PNode = val.ord.toNode
+
+proc toNode* (list: openArray[int|float|string|bool|enum]): PNode =
+    result = newNode(nkBracket)
+    result.sons.initialize(list.len)
+    for i in 0..list.high: result.sons[i] = list[i].toNode()
+
+proc toNode* (tree: tuple|object): PNode =
+    result = newTree(nkPar)
+    for field in tree.fields:
+        result.sons.add(field.toNode)
+
+proc toNode* (tree: ref tuple|ref object): PNode =
+    result = newTree(nkPar)
+    if tree.isNil: return result
+    for field in tree[].fields:
+        result.sons.add(field.toNode)
 
 
 proc setupNimscript =

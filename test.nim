@@ -1,5 +1,5 @@
 
-from compiler/ast import getInt, newIntNode, nkInt32Lit
+from compiler/ast import getInt
 
 import embeddedNims/enims
 import state
@@ -20,11 +20,11 @@ proc main =
     # Calls the nims proc sub with the arguments 8 and 12, and prints the result
     # We need to use procs like newIntNode and getInt since we're dealing with PNode types here
     echo "From NIM to NIMS and back:    8 - 12 = ", script1.call("sub",
-        [newIntNode(nkInt32Lit, 8), newIntNode(nkInt32Lit, 12)]).getInt()
+        [toNode(8), toNode(12)]).getInt()
 
     script2.call("update")
 
-    # Try hot loading:
+    # Try hot loading
     when false:
         echo "change state to `quit` in script2.nims to break"
         while true:
