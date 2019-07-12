@@ -1,3 +1,3 @@
 
 proc update* =
-    modifyState("cats")
+  modifyState("cats")
