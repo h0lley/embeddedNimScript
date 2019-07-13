@@ -17,9 +17,9 @@ proc main =
         # Can change state.modifyMe through its update proc
         script2 = compileScript("script2.nims")
 
-    # Calls the nims proc sub with the arguments 8 and 12, and prints the result
+    # Calls the nims proc subtract with the arguments 8 and 12, and prints the result
     # We need to use procs like newIntNode and getInt since we're dealing with PNode types here
-    echo "From NIM to NIMS and back:    8 - 12 = ", script1.call("sub",
+    echo "From NIM to NIMS and back:    8 - 12 = ", script1.call("subtract",
         [toNode(8), toNode(12)]).getInt()
 
     script2.call("update")
